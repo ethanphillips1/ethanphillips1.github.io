@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+      <title>I Don't Know What I'm Doing</title>
+      <style>
+        body {
+            background: rgb(155, 221, 255);
+            color: rgb(45, 45, 45);
+            padding: 10px;
+            font-family: arial;
+        }
+        #all-contents {
+            max-width: 1250px;
+            margin: auto;
+        }
+    
+        /* navigation menu */
+        nav {
+            background: rgb(0, 0, 50);
+            margin: 0 auto;
+            margin-bottom: 25px;
+            display: flex;
+            padding: 25px;
+        }
+        h1 {
+            display: flex;
+            align-items: center;
+            color: white;
+            flex: 1;
+            margin: 0;
+        }
+        #nav-ul {
+            list-style-image: none;
+        }
+        .nav-li {
+            display: inline-block;
+            padding: 0 15px;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+    
+        /* main container area beneath menu */
+        main {
+            background: rgb(245, 238, 219);
+            display: flex;
+        }
+        .sidebar {
+            margin-right: 25px;
+            padding: 10px;
+        }
+        .sidebar-img {
+            width: 400px;
+        }
+        .content {
+            flex: 1;
+            padding: 15px;
+        }
+        #interests {
+            border: 10px silver ridge;
+            padding: 25px;
+        }
+        h2, h3 {
+            margin: 0px;
+        }
+    </style>
+    </head>
+    
+    <body>
+        <!-- All content goes here -->
+        <div id="all-contents"> 
+            <nav>
+                <h1>It's About Me I Guess</h1>
+                <ul id="nav-ul">
+                    <li class="nav-li">
+                      <a href="index.html"> Home </a>
+                    </li>
+                    <li class="nav-li">
+                      <a href="portfolio.html"> Portfolio </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <main>
+                 <!-- Sidebar section -->
+                <div class="sidebar">
+                    <img class="sidebar-img" src="https://mail.google.com/mail/u/1?ui=2&ik=3619eb354e&attid=0.1&permmsgid=msg-f:1715597637863500791&th=17cf06f6465a6bf7&view=fimg&fur=ip&sz=s0-l75-ft&attbid=ANGjdJ-HOXC5d9ESQABCm6JFTyN2KLT-CeFRU3c4_xJ6_R8oQM1R56ynhgh4umhyqUOhug92aHMXBXEZVQhuF-Vu5MTC6t-RK3avwSndZwxLkkQNJAUz3mpuGB2uc6M&disp=emb&realattid=17cf06ee44c67fb3291">
+                </div>
+
+                <!-- Content section -->
+                <div class="content">
+                    <h2>
+                        Ethan Phillips
+                    </h2>
+
+                    <p>
+                        Student at Northshore High School
+                    </p>
+
+                    <!-- Insterests Section -->
+                    <div id="interests">
+                        <h3>
+                            Interests
+                        </h3>
+                        <ul>
+                            <li>Baseball</li>
+                            <li>Vehicles</li>
+                            <li>Mechanics</li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>
