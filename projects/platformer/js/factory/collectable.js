@@ -16,8 +16,8 @@
              * Extra adjustments or configuration.
              */
             switch (type.assetKey) {
-                case 'db':
-                    collectable.body.height = 44;
+                case 'star':
+                    collectable.scale.x = collectable.scale.y = .25;
                     break;
                     
                 case 'grace':

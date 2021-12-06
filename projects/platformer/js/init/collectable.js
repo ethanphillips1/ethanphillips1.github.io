@@ -9,7 +9,8 @@
         max: {assetKey: 'max', points: 20},
         steve: {assetKey: 'steve', points: 30},
         grace: {assetKey: 'grace', points: 40},
-        kennedi: {assetKey: 'kennedi', points: 50}
+        kennedi: {assetKey: 'kennedi', points: 50},
+        star: {assetKey: 'star', points: 25}
     };
     
     /**
@@ -37,10 +38,10 @@
         // ALL YOUR CODE GOES BELOW HERE ///////////////////////////////////////
         
         // example: 
-        createCollectable(type.db, 125, 170, 6, 0.7);
-        createCollectable(type.steve, 700, 170, 6, 0.7);
-        createCollectable(type.max, 125, 370, 6, 0.7);
-        createCollectable(type.db, 700, 370, 6, 0.7);
+        createCollectable(type.star, 125, 170, 6, 1);
+        createCollectable(type.star, 700, 170, 6, 1);
+        createCollectable(type.star, 125, 370, 6, 1);
+        createCollectable(type.star, 700, 370, 6, 1);
         
         
         
