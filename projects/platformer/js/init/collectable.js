@@ -38,10 +38,10 @@
         // ALL YOUR CODE GOES BELOW HERE ///////////////////////////////////////
         
         // example: 
-        createCollectable(type.star, 125, 170, 6, 1);
-        createCollectable(type.star, 700, 170, 6, 1);
-        createCollectable(type.star, 125, 370, 6, 1);
-        createCollectable(type.star, 700, 370, 6, 1);
+        createCollectable(type.star, 125, 170, 3, 0.9);
+        createCollectable(type.star, 700, 170, 3, 0.9);
+        createCollectable(type.star, 125, 370, 3, 0.9);
+        createCollectable(type.star, 700, 370, 3, 0.9);
         
         
         
