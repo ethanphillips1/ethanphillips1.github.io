@@ -20,8 +20,8 @@ var init = function (window) {
         ////////////////////////////////////////////////////////////
         
         // TODO 1 : Declare and initialize our variables
-        var circles;
         var circle;
+        var circles [];
         // TODO 2 : Create a function that draws a circle 
         function drawCircle () {
             circle = draw.randomCircleInArea(canvas, true, true, '999', 2);
@@ -30,6 +30,10 @@ var init = function (window) {
             circles.push(circle);
         }
         // TODO 3 / 8 : Call the drawCircle() function 
+        drawCircle();
+        drawCircle();
+        drawCircle();
+        drawCircle();
         drawCircle();
         ////////////////////////////////////////////////////////////
         ///////////////// PROGRAM LOGIC ////////////////////////////
@@ -42,7 +46,6 @@ var init = function (window) {
         */
         function update() {
             // TODO 4 : Update the circle's position //
-
             
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
            
