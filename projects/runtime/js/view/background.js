@@ -27,7 +27,9 @@ var background = function (window) {
         
         // ANIMATION VARIABLES HERE:
         
-     
+        var tree; 
+        var buildings = [];
+
         // called at the start of game and whenever the page is resized
         // add objects for display in background. draws each image added to the background once
         function render() {
@@ -36,17 +38,40 @@ var background = function (window) {
             // TODO: 2 - Part 2
             // this fills the background with a obnoxious yellow
             // you should modify this to suit your game
-            var backgroundFill = draw.rect(canvasWidth,canvasHeight,'yellow');
-            background.addChild(backgroundFill);
+            var backgroundFill = draw.rect(canvasWidth, groundY, '#200000'); // creates variable (backgroundFill) & stores rectangle as background
+            background.addChild(backgroundFill); // adds it to canvas (makes it visible) 
             
-            // TODO: 3 - Add a moon and starfield
+            // TODO: 3 - Add a moon and starfield         I switched the moon and the stars around because I wanted the moon on top of the stars.
+            for (var i = 0; i <= 100; i++) {
+                var circle = draw.circle(2, 'white', 'LightGray', 2); // creates variable (circle) that holds each circle
+                circle.x = canvasWidth*Math.random(); // multiples canvasWidth by a random decimal between 0 and 1 for a random x-coordinate
+                circle.y = groundY*Math.random(); // multiplies groundY by a random decimal between 0 and 1 for a random y-coordinate
+                background.addChild(circle); // makes each circle visible
+            }
             
-            
-            // TODO 5: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
-            
+            var moon = draw.bitmap('img/bmoon.png'); //creates variable (moon) to hold image of the moon
+            moon.x = canvasWidth - 300; // x-coordinate of the image
+            moon.y = groundY - 500; // y-coordinate of the image
+            moon.scaleX = 1.5; // changes x-scale of image
+            moon.scaleY = 1.5; // changes y-scale of image
+            background.addChild(moon); // makes it visible
+
+            // TODO 5: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?  A: The buildings are supposed to be behind the tree.
+            //creates building w/ x & y value / pushes it to array
+            for(var i = 0; i < 10; i++) {
+                var buildingHeight = 300; // holds height of building
+                var building = draw.rect(75, buildingHeight, 'LightGray', 'Black', 1); //holds and creates each building
+                building.x = 200 * i; // adds 200 to x-coordinate every time it runs
+                building.y = groundY - buildingHeight; // y-coordinate on ground
+                background.addChild(building); // adds building to background
+                buildings.push(building); // pushing buildings to array to store as index
+            }
             
             // TODO 4: Part 1 - Add a tree
-            
+            tree = draw.bitmap('img/tree.png');
+            tree.x = canvasWidth;
+            tree.y = groundY - 225;
+            background.addChild(tree);
             
         } // end of render function - DO NOT DELETE
         
@@ -61,9 +86,23 @@ var background = function (window) {
             
             // TODO 4: Part 2 - Move the tree!
             
+            tree.x = tree.x - 2;
+            if(tree.x < -200) {
+                tree.x = canvasWidth;
+            }
             
+            for (var i = 0; i < buildings.length; i++) {
+                var building = buildings[i];
+            
+                // code to do something with each element
+            }
+
             // TODO 5: Part 2 - Parallax
             
+            building.x = building.x - 1;
+            if(building.x < -200) {
+                building.x = canvasWidth;
+            }
 
         } // end of update function - DO NOT DELETE
         
