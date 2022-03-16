@@ -36,14 +36,14 @@ var background = function (window) {
             background.removeAllChildren();
 
             // TODO: 2 - Part 2
-            // this fills the background with a obnoxious yellow
+            // this fills the background with an obnoxious yellow
             // you should modify this to suit your game
             var backgroundFill = draw.rect(canvasWidth, groundY, '#200000'); // creates variable (backgroundFill) & stores rectangle as background
             background.addChild(backgroundFill); // adds it to canvas (makes it visible) 
             
             // TODO: 3 - Add a moon and starfield         I switched the moon and the stars around because I wanted the moon on top of the stars.
             for (var i = 0; i <= 100; i++) {
-                var circle = draw.circle(2, 'white', 'LightGray', 2); // creates variable (circle) that holds each circle
+                var circle = draw.circle(2, '#FF4141', '#FF1010', 2); // creates variable (circle) that holds each circle
                 circle.x = canvasWidth*Math.random(); // multiples canvasWidth by a random decimal between 0 and 1 for a random x-coordinate
                 circle.y = groundY*Math.random(); // multiplies groundY by a random decimal between 0 and 1 for a random y-coordinate
                 background.addChild(circle); // makes each circle visible
@@ -58,21 +58,26 @@ var background = function (window) {
 
             // TODO 5: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?  A: The buildings are supposed to be behind the tree.
             //creates building w/ x & y value / pushes it to array
-            for(var i = 0; i < 10; i++) {
-                var buildingHeight = 300; // holds height of building
-                var building = draw.rect(75, buildingHeight, 'LightGray', 'Black', 1); //holds and creates each building
+            for(var i = 0; i < 11; i++) {
+                var buildingHeight = groundY - 100; // holds random height of building
+                var building = draw.rect(75, buildingHeight, "#1B1000", 'Black', 1); //holds and creates each building
                 building.x = 200 * i; // adds 200 to x-coordinate every time it runs
                 building.y = groundY - buildingHeight; // y-coordinate on ground
                 background.addChild(building); // adds building to background
                 buildings.push(building); // pushing buildings to array to store as index
             }
-            
+
+            for (var i = 0; i < buildings.length; i++) {
+                var building = buildings[i];
+                
+            }
+            /*
             // TODO 4: Part 1 - Add a tree
             tree = draw.bitmap('img/tree.png');
             tree.x = canvasWidth;
             tree.y = groundY - 225;
             background.addChild(tree);
-            
+            */
         } // end of render function - DO NOT DELETE
         
         
@@ -85,25 +90,25 @@ var background = function (window) {
             var groundY = ground.y;
             
             // TODO 4: Part 2 - Move the tree!
-            
-            tree.x = tree.x - 2;
-            if(tree.x < -200) {
-                tree.x = canvasWidth;
+            /*
+            tree.x = tree.x - 1.5; // speed of animated tree
+            // loop tree back to end of screen
+            if(tree.x < -200) {  
+                tree.x = canvasWidth; // send tree to end of screen
             }
-            
-            for (var i = 0; i < buildings.length; i++) {
-                var building = buildings[i];
-            
-                // code to do something with each element
-            }
-
+            */
             // TODO 5: Part 2 - Parallax
             
-            building.x = building.x - 1;
-            if(building.x < -200) {
-                building.x = canvasWidth;
+            // loop for each building to loopp the screen
+            for (var i = 0; i < buildings.length; i++) {
+                var building = buildings[i]; //put value into each building
+                building.x = building.x - 0.75; //speed of animated buildings
+                //loop building back to end of screen
+                if (building.x < -200) {
+                    building.x = canvasWidth; //send building to end of screen
+                }
             }
-
+            
         } // end of update function - DO NOT DELETE
         
         
