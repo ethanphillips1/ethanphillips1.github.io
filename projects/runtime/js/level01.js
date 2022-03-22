@@ -16,17 +16,19 @@ var level01 = function (window) {
             "number": 1, 
             "speed": -3,
             "gameItems": [
-                { "type": "sawblade", "x": 400, "y": groundY - 10},
-                { "type": "sawblade", "x": 600, "y": groundY - 10},
-                { "type": "sawblade", "x": 900, "y": groundY - 10},
+                { "type": "stump", "x": 400, "y": groundY - 10},
+                { "type": "stump", "x": 600, "y": groundY - 10},
+                { "type": "stump", "x": 900, "y": groundY - 10},
 
-                { "type": "enemy", "x": 400, "y": groundY - 50},
-                { "type": "enemy", "x": 800, "y": groundY - 50},
-                { "type": "enemy", "x": 1200, "y": groundY - 50},
+                { "type": "gator", "x": 400, "y": groundY - 10},
+                { "type": "gator", "x": 800, "y": groundY - 10},
+                { "type": "gator", "x": 1200, "y": groundY - 10},
 
-                { "type": "reward", "x": 600, "y": groundY - 105},
-                { "type": "reward", "x": 1000, "y": groundY - 105},
-                { "type": "reward", "x": 1400, "y": groundY - 105},
+                { "type": "rougarou", "x": 1600, "y": groundY - 50},
+
+                { "type": "egret", "x": 600, "y": groundY - 105},
+                { "type": "egret", "x": 1000, "y": groundY - 105},
+                { "type": "egret", "x": 1400, "y": groundY - 105},
             ]
         };
         window.levelData = levelData;
@@ -35,62 +37,89 @@ var level01 = function (window) {
 
         // TODO 6 and on go here
         // BEGIN EDITING YOUR CODE HERE
-        function createSawBlade (x, y) {
+        function createStump (x, y) {
             var hitZoneSize = 25; //size
             var damageFromObstacle = 10; //damage
-            var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //creates obstacle
-            sawBladeHitZone.x = x; //x-value of hitzone
-            sawBladeHitZone.y = y; //y-value of hitzone
-            game.addGameItem(sawBladeHitZone); //adds hitzone to game
+            var stumpHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //creates obstacle
+            stumpHitZone.x = x; //x-value of hitzone
+            stumpHitZone.y = y; //y-value of hitzone
+            game.addGameItem(stumpHitZone); //adds hitzone to game
 
             var obstacleImage = draw.bitmap('img/stump(3).png'); //draws & stores image
-            sawBladeHitZone.addChild(obstacleImage); //adds image to hitzone
+            stumpHitZone.addChild(obstacleImage); //adds image to hitzone
             obstacleImage.x = -165; //lines image x up with hitzone x
             obstacleImage.y = -170; ///lines image y up with hitzone y 
         }
 
-        function createEnemy (x, y) {
-            var enemy = game.createGameItem('enemy',25); //creates and stores enemy
-            var enemyImage = draw.bitmap('img/gator.png'); 
-            enemyImage.x = -25; //align hitbox with enemy
-            enemyImage.y = -25;
-            enemy.addChild(enemyImage);
-            enemy.x = x;
-            enemy.y = y;
-            game.addGameItem(enemy);
-            enemy.velocityX = -2.5; //move enemy x pixels left
+        function createGator (x, y) {
+            var gator = game.createGameItem('gator',25); //creates and stores enemy
+            var gatorImage = draw.bitmap('img/gator.png'); 
+            gatorImage.x = -25; //align hitbox with enemy
+            gatorImage.y = -80;
+            gator.addChild(gatorImage);
+            gator.x = x;
+            gator.y = y;
+            game.addGameItem(gator);
+            gator.velocityX = -2.5; //move enemy x pixels left
             //enemy.rotationalVelocity = -2;  //rotates enemy
 
             
 
 
-            enemy.onPlayerCollision = function() {
+            gator.onPlayerCollision = function() {
                 game.changeIntegrity(-10) //HEALTH LOST WHEN ENEMY HITS hallebot
                 console.log('The enemy has hit Halle');
             };
 
-            enemy.onProjectileCollision = function() {
+            gator.onProjectileCollision = function() {
                 game.increaseScore(10); //increases score
                 enemy.shrink(); //enemy disappears
-                console.log("Enemy has been hit");
+                console.log("Gator has been hit");
             };
         };
 
-        function createReward (x, y) {
-            var reward = game.createGameItem('reward',25); //creates and stores reward
-            var rewardImage = draw.bitmap('img/egret.png'); //draws and stores blue square 
-            rewardImage.x = -100; //align hitbox with 
-            rewardImage.y = -60;
-            reward.addChild(rewardImage);
-            reward.x = x;
-            reward.y = y;
-            game.addGameItem(reward);
-            reward.velocityX = -2.5; //move reward 1 pixel left
+        function createRougarou (x, y) {
+            var rougarou = game.createGameItem('rougarou',25); //creates and stores enemy
+            var rougarouImage = draw.bitmap('img/rougarou.png'); 
+            rougarouImage.x = -50; //align hitbox with enemy
+            rougarouImage.y = -100;
+            rougarou.addChild(rougarouImage);
+            rougarou.x = x;
+            rougarou.y = y;
+            game.addGameItem(rougarou);
+            rougarou.velocityX = -2.5; //move enemy x pixels left
+            //enemy.rotationalVelocity = -2;  //rotates enemy
+
+            
+
+
+            rougarou.onPlayerCollision = function() {
+                game.changeIntegrity(-10) //HEALTH LOST WHEN ENEMY HITS hallebot
+                console.log('The Rougarou has hit Halle');
+            };
+
+            rougarou.onProjectileCollision = function() {
+                game.increaseScore(10); //increases score
+                rougarou.fadeOut(); //enemy disappears
+                console.log("Rougarou has been hit");
+            };
+        };
+
+        function createEgret (x, y) {
+            var egret = game.createGameItem('egret',25); //creates and stores reward
+            var egretImage = draw.bitmap('img/egret.png'); //draws and stores blue square 
+            egretImage.x = -100; //align hitbox with img
+            egretImage.y = -60;  // ^^^
+            egret.addChild(egretImage);
+            egret.x = x;
+            egret.y = y;
+            game.addGameItem(egret);
+            egret.velocityX = -2.5; //move reward 1 pixel left
             //reward.rotationalVelocity = -2;  //rotates reward
 
-            reward.onPlayerCollision = function() {
+            egret.onPlayerCollision = function() {
                 game.changeIntegrity(10) //HEALTH LOST WHEN reward HITS hallebot
-                reward.shrink(); //reward shrinks
+                egret.flyTo(-50, -50); //reward shrinks
                 game.increaseScore(10); //increases score
                 console.log('Halle has collected a reward');
             };
@@ -98,14 +127,17 @@ var level01 = function (window) {
         
         for (var i = 0; i < levelData.gameItems.length; i++) {
             var gameItem = levelData.gameItems[i];
-            if (gameItem.type === "sawblade") {
-                createSawBlade(gameItem.x, gameItem.y);
+            if (gameItem.type === "stump") {
+                createStump(gameItem.x, gameItem.y);
             } 
-            if (gameItem.type === "enemy") {
-                createEnemy(gameItem.x, gameItem.y);
+            if (gameItem.type === "gator") {
+                createGator(gameItem.x, gameItem.y);
             } 
-            if (gameItem.type === "reward") {
-                createReward(gameItem.x, gameItem.y);
+            if (gameItem.type === "rougarou") {
+                createRougarou(gameItem.x, gameItem.y);
+            }
+            if (gameItem.type === "egret") {
+                createEgret(gameItem.x, gameItem.y);
             }
         }
         // DO NOT EDIT CODE BELOW HERE
