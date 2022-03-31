@@ -38,28 +38,28 @@ var background = function (window) {
             // TODO: 2 - Part 2
             // this fills the background with an obnoxious yellow
             // you should modify this to suit your game
-            var backgroundFill = draw.rect(canvasWidth, groundY, '#200000'); // creates variable (backgroundFill) & stores rectangle as background
+            var backgroundFill = draw.rect(canvasWidth, groundY, '#0F0F32'); // creates variable (backgroundFill) & stores rectangle as background
             background.addChild(backgroundFill); // adds it to canvas (makes it visible) 
             
             // TODO: 3 - Add a moon and starfield         I switched the moon and the stars around because I wanted the moon on top of the stars.
             for (var i = 0; i <= 100; i++) {
-                var circle = draw.circle(2, '#FF4141', '#FF1010', 2); // creates variable (circle) that holds each circle
+                var circle = draw.circle(2, "white", "white", 2); // creates variable (circle) that holds each circle
                 circle.x = canvasWidth*Math.random(); // multiples canvasWidth by a random decimal between 0 and 1 for a random x-coordinate
                 circle.y = groundY*Math.random(); // multiplies groundY by a random decimal between 0 and 1 for a random y-coordinate
                 background.addChild(circle); // makes each circle visible
             }
             
-            var moon = draw.bitmap('img/bmoon.png'); //creates variable (moon) to hold image of the moon
+            var moon = draw.bitmap('img/moon.png'); //creates variable (moon) to hold image of the moon
             moon.x = canvasWidth - 300; // x-coordinate of the image
-            moon.y = groundY - 500; // y-coordinate of the image
-            moon.scaleX = 1.5; // changes x-scale of image
-            moon.scaleY = 1.5; // changes y-scale of image
+            moon.y = groundY - 450; // y-coordinate of the image
+            moon.scaleX = .75; // changes x-scale of image
+            moon.scaleY = .75; // changes y-scale of image
             background.addChild(moon); // makes it visible
 
             // TODO 5: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?  A: The buildings are supposed to be behind the tree.
             //creates building w/ x & y value / pushes it to array
             for(var i = 0; i < 11; i++) {
-                var buildingHeight = groundY - 100; // holds random height of building
+                var buildingHeight = groundY * Math.random(); // holds random height of building
                 var building = draw.rect(75, buildingHeight, "#1B1000", 'Black', 1); //holds and creates each building
                 building.x = 200 * i; // adds 200 to x-coordinate every time it runs
                 building.y = groundY - buildingHeight; // y-coordinate on ground
